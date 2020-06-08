@@ -1,0 +1,74 @@
+from Individual import *
+
+
+class Admin(Individual):
+    '''Contains functions for use of an administrator'''
+
+    def __init__(self):
+        print('A new admin has been created')
+
+    def add_course(self, course_id):
+        '''Adds a course to the database'''
+        add_another_day = True  # Flag for adding additional meeting days/times
+        choice = 'y'
+        course = {}
+        course['Days'] = []
+        course['Start Time'] = []
+        course['End Times'] = []
+        course_name = input('Enter course name: ')
+        while add_another_day == True:
+            course['Days'].append(input('Enter a day to meet: '))
+            course['Start Time'].append(input('Enter a starting time for this day: '))
+            course['End Time'].append(input('Enter an ending time for this day: '))
+
+            choice = input("Add another meeting time? ([y] or [n]")
+            if choice == 'y':
+                add_another_day = True
+            else:
+                add_another_day = False
+
+        # All information passed to SQL here
+        print('{} has been added'.format(course_id))
+
+    def remove_course(self, course_id):
+        '''Removes a course from the database'''
+        # Find ID in SQL and delete course
+
+    def add_user(self, user_id, first_name, last_name):
+        '''Adds a new user to the database'''
+        # Adds ID and name in SQL to users table
+
+    def remove_user(self, user_id):
+        '''Removes a user from the database'''
+        # Find user in SQL and remove them
+
+    def add_user_to_course(self, user_id, course_id):
+        '''Adds a user to a certain course'''
+        # Modifies a course roster in SQL
+
+    def remove_user_from_course(self, user_id, course_id):
+        '''Removes a user from a course'''
+        # Remove user in SQL database
+
+    def search_roster(self, user_name, course_id):
+        '''Searches a course for a specific user (searches by name)'''
+        # Get table, search for name, print out results
+        results = []
+        return results
+
+    def print_roster(self, course_id):
+        results = []
+        # Get data from sql and save it in results
+        for user in results:
+            print(results)
+
+    def search_courses(self, course_name):
+        results = []
+        # Get data from SQL
+        return results
+
+    def print_courses(self):
+        results = []
+        # Query SQL for all courses and save names to results
+        for course in results:
+            print(course)
