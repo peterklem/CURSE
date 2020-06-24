@@ -1,1 +1,34 @@
-<mxfile host="app.diagrams.net" modified="2020-06-24T19:13:00.734Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" version="13.3.0" etag="4xDtKupdxGquSmWZmBDG" type="github"><diagram id="wqLLshhNHK5Aav5gpbg1">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-06-24T19:13:30.798Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="yZxPnrHcSRIDRY_RjyjD" version="13.3.0" type="github" pages="4">
+  <diagram id="wqLLshhNHK5Aav5gpbg1" name="Individual">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="92HIklEYWmQCcr-kN5_x" name="Student">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="ECqk4j46qyP6cak-woFQ-0" />
+        <mxCell id="ECqk4j46qyP6cak-woFQ-1" parent="ECqk4j46qyP6cak-woFQ-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="sxr0FO-X8VUjkRRIjZFz" name="Instructor">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="6X8XqOHmnyWU7Wn3VcdK-0" />
+        <mxCell id="6X8XqOHmnyWU7Wn3VcdK-1" parent="6X8XqOHmnyWU7Wn3VcdK-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="gLAXXd08ZubqZ0SrvTMd" name="Admin">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="2xGj0Ju0j3eQKPch9RwB-0" />
+        <mxCell id="2xGj0Ju0j3eQKPch9RwB-1" parent="2xGj0Ju0j3eQKPch9RwB-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
