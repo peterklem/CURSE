@@ -96,4 +96,18 @@ class Individual:
 
 
     def logout(self):
-        pass
+        logout_check = ''   # Holds user's confirmation decision upon logging out
+
+        logout_check = input('Are you sure you want to log out? (Y/N)')
+
+        if logout_check == 'Y' or logout_check == 'y':
+            #   Reset all class variables
+            self._first_name = ""
+            self._last_name = ""
+            self._id = ""
+
+        elif logout_check == 'N' or logout_check == 'n':
+            print("Logout cancelled")
+
+        else:
+            print("invalid input.")
