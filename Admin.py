@@ -32,7 +32,10 @@ class Admin(Individual):
 
     def remove_course(self, course_id):
         '''Removes a course from the database'''
-        # Find ID in SQL and delete course
+        course_ID = input("Enter the course CRN you wish to remove: ")
+        courseRemove = ('DELETE FROM COURSE WHERE CRN = ' + course_ID)
+        cursor.execute(courseRemove)
+        print("Course has been removed.")
 
     def add_user(self, user_id, first_name, last_name):
         '''Adds a new user to the database'''

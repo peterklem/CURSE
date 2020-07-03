@@ -19,8 +19,9 @@ class Instructor(Individual):
             print(course)
 
     def print_class_roster(self, course_id):
-        # Needs sql
-        roster = []
-        for student in roster:
-            roster.append(student)
-        return roster
+        rosterQuery = 'SELECT * FROM ' #* can be changed to Student First/Last names
+        rosterQueryFinal = (rosterQuery + roster)
+        def r_Print(roster):
+            cursor.execute (rosterQueryFinal)
+        roster = input("Enter the roster to print")
+        r_Print(roster)

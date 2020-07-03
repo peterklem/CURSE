@@ -15,13 +15,19 @@ class Student(Individual):
 
     def add_course(self, course_id):
         '''Adds this student to a course specified by course ID'''
-        # Need SQL database
-        None
+        course_id = input("Enter the CRN of the course to add: ")
+        courseAddStart = 'SELECT * FROM COURSE WHERE CRN = '
+        courseAddFinal = (courseAddStart + courseAdd)
+        cursor.execute(courseFinal)
+        result = cursor.execute()
+        #need to add to students database
 
     def drop_course(self, course_id):
         '''Removes this student to a course specified by course ID'''
-        # Needs SQL
-        None
+        courseRemove = input("Enter the CRN of the course to remove: ")
+        courseRemoveStart = 'DELETE FROM SCHEDULE WHERE CRN = '
+        courseRemoveFinal = (courseRemoveStart + courseRemove)
+        cursor.execute(courseRemoveFinal)
 
     def print_schedule(self):
         '''Prints out student's schedule'''
