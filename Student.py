@@ -18,7 +18,7 @@ class Student(Individual):
         course_id = input("Enter the CRN of the course to add: ")
         courseAddStart = 'SELECT * FROM COURSE WHERE CRN = '
         courseAddFinal = (courseAddStart + courseAdd)
-        cursor.execute(courseFinal)
+        cursor.execute(courseAddFinal)
         result = cursor.execute()
         #need to add to students database
 
