@@ -9,23 +9,23 @@ class Admin(Individual):
 
     def add_course(self, course_id):
         '''Adds a course to the database'''
-            courseName = input("Enter the course name to add: ") #these variables may need to be changed in order to fit into the correct database spots
-            course_ID = input("Enter the ID for the course: ")
-            courseDept = input("Enter the department name: ")
-            courseIFName = input("Enter the instructor's first name: ")
-            courseILName = input("Enter the instrucor's last name: ")
-            courseTimeStart = input("Enter the time of the course: ")
-            courseTimeEnd = input("Enter the time the course ends: ")
-            courseDay = input("Enter the days the course takes place (separate the days with spaces): ")
-            courseSemester = input("Enter what semester the course will be offered for: ")
-            courseYear = input("Enter what year the course will be taking place: ")
-            courseCredits = input("Enter how many credits the course is: ")
-            courseCombine = ('INSERT INTO COURSE VALUES (\'' + courseName + '\',' + 
-                              course_ID + ', \'' + courseDept + '\', \'' + courseIFName + '\', \'' + 
-                              courseILName + '\', ' + courseTimeStart + ', ' + courseTimeEnd + ', \'' + courseDay + '\', \'' + 
-                              courseSemester + '\', ' + courseYear + ', ' + courseCredits + ')')
-            cursor.execute(courseCombine)
-            print("Course has been added.")
+        courseName = input("Enter the course name to add: ") #these variables may need to be changed in order to fit into the correct database spots
+        course_ID = input("Enter the ID for the course: ")
+        courseDept = input("Enter the department name: ")
+        courseIFName = input("Enter the instructor's first name: ")
+        courseILName = input("Enter the instrucor's last name: ")
+        courseTimeStart = input("Enter the time of the course: ")
+        courseTimeEnd = input("Enter the time the course ends: ")
+        courseDay = input("Enter the days the course takes place (separate the days with spaces): ")
+        courseSemester = input("Enter what semester the course will be offered for: ")
+        courseYear = input("Enter what year the course will be taking place: ")
+        courseCredits = input("Enter how many credits the course is: ")
+        courseCombine = ('INSERT INTO COURSE VALUES (\'' + courseName + '\',' + 
+                          course_ID + ', \'' + courseDept + '\', \'' + courseIFName + '\', \'' + 
+                          courseILName + '\', ' + courseTimeStart + ', ' + courseTimeEnd + ', \'' + courseDay + '\', \'' + 
+                          courseSemester + '\', ' + courseYear + ', ' + courseCredits + ')')
+        cursor.execute(courseCombine)
+        print("Course has been added.")
 #        add_another_day = True  # Flag for adding additional meeting days/times
 #        choice = 'y'
 #        course = {}
