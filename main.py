@@ -12,32 +12,133 @@ import sqlite3
 if __name__ == '__main__':
 #Variables
     user_input_id = ""      # Temporarily holds user's id during login
-    user_type = ""
+    user_type = ""          # Holds the type of user that is trying to log in
+    user_pass = ""          # Holds user's entered password
+    login_flag = False
+    quit_flag = False
 # Call login
-    while len(user_input_id) == 0:
-        user_login = input("Enter user ID: ")
-        if user_login == "":
-            print("Please enter a valid ID.")
-        else: # User entered something
-            
+    while quit_flag == False: # Go while the user does 
+
+        while login_flag == False:
             user_type = input("Are you a student, instructor, or admin? ")
-            user_type.capitalize()
+            user_input_id = input("Enter user ID: ")  
+            user_input_id = input("Enter password: ")
+            user_type = user_type.upper()
 
             if user_type == 'STUDENT':
+                Student_obj = Student()
+                login_flag = Student_obj.login(user_input_id, user_type, user_pass)
+                if login_flag == False:
+                    del Student_obj
+            elif user_type == 'INSTRUCTOR':
+                Instructor_obj = Instructor()
+                login_flag = Instructor_obj.login(user_input_id, user_type, user_pass)
+                if login_flag == False:
+                    del Instructor_obj
+            elif user_type == 'ADMIN':
+                Admin_obj = Admin()
+                login_flag = Admin_obj.login(user_input_id, user_type, user_pass)
+                if login_flag == False:
+                    del Admin_obj
+            else:
+                print("Invalid login information, please try again.")
 
-                # Search student table for ID matches
-                db = sqlite3.connect("assignment2.db")
-                cursor = db.cursor()
-                command = "SELECT ID FROM STUDENT WHERE ID = " + user_input_id
-                cursor.execute(command)
-                id_lst = cursor.fetchall() # Contains list of matching student ID's as what was input
+        # Main menu
+        while login_flag == True:
+            # Everyone has the option to:
+            #     Logout
+            #     Search all courses
+            #     Search course based on parameter
 
-                if len(id_lst) == 0:
-                    # No matching ID's
-                    print("There is no student with that ID. Please retry.")
+            # Students have the option to:
+            #     Add or remove course from semester schedule
+
+            # Instructors have the option to:
+            #     Assemble course roster
+
+            # Admins have the option to:
+            #     Add course to system
+            #     Remove course from system
+
+            selection_input = 0     # Holds the user's selection once logged in
+
+            print("To search course by ID, enter '1'.")
+            print("To search for courses based on other parameters, enter '2'.")
+            print("To log out, enter '3'.")
+            if user_type == 'STUDENT':
+                print("To add a course to your schedule, enter '4'.")
+                print("To remove a course from your schedule, enter '5'.\n")
+
+                selection_input = input()
+
+                if selection_input == 1:
+                    # Call student search course by ID
+                    pass
+                elif selection_input == 2:
+                    #Call student search course by some other condition
+                    pass
+                elif selection_input == 3:
+                    # Call student logout
+                    login_flag = False
+                    pass
+                elif selection_input == 4:
+                    # Call student add class to schedule
+                    pass
+                elif selection_input == 5:
+                    # Call student remove class from schedule
+                    pass
+
                 else:
-                    Student_obj = Student() # instantiate a new student
-                    
-                db.close()
+                    print("Invalid selection, please try again. \n")
+                
 
-        
+
+            elif user_type == "INSTRUCTOR":
+                print("To print the class roster for a certain course, enter '4'.\n")
+
+                if selection_input == 1:
+                    # Call instructor search course by ID
+                    pass
+                elif selection_input == 2:
+                    #Call instructor search course by some other condition
+                    pass
+                elif selection_input == 3:
+                    # Call instructor logout
+                    login_flag = False
+                    pass
+                elif selection_input == 4:
+                    # Call instructor assemble course roster
+                    pass
+                else:
+                    print("Invalid selection, please try again. \n")
+                
+            elif user_type == "ADMIN":
+                print("To add a course to the system, enter '4'.")
+                print("To remove a course from the system, enter '5'.\n")
+
+                if selection_input == 1:
+                    # Call admin search course by ID
+                    pass
+                elif selection_input == 2:
+                    #Call student search course by some other condition
+                    pass
+                elif selection_input == 3:
+                    # Call admin logout
+                    login_flag = False
+                    pass
+                elif selection_input == 4:
+                    # Call admin add course to system
+                    pass
+                elif selection_input == 5:
+                    # Call admin remove course from system
+                    pass
+
+                else:
+                    print("Invalid selection, please try again. \n")
+
+            else:
+                raise Exception("The user type is not set.")
+
+            
+
+            
