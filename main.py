@@ -79,7 +79,7 @@ if __name__ == '__main__':
                     pass
                 elif selection_input == 3:
                     # Call student logout
-                    login_flag = False
+                    login_flag = Student_obj.logout()
                     pass
                 elif selection_input == 4:
                     # Call student add class to schedule

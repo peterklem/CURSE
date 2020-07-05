@@ -70,4 +70,27 @@ class Individual:
                 
 
     def logout(self):
-        pass
+        '''Confirms if the user wants to log out or not'''
+        # Return value should be set equal to the login flag
+        is_user_sure = input("Are you sure you want to log out? ('y' or 'n'): ")
+        if is_user_sure == 'y' or is_user_sure == 'Y':
+            print("Logout confirmed.")
+            return False # User logs out.
+        else:
+            return True # User stays logged in.
+
+
+    def course_search_id(self, course_id):
+        db = sqlite3.connect('assignment2.db')
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM COURSE WHERE CRN = '" + course_id + "'")
+        course_info = cursor.fetchall()
+
+        if len(course_info) == 0:
+            print("Course does not exist. ")
+        
+        elif len(course_info) > 1:
+            print("There are multiple courses with that particular ID. Please report to admin.")
+
+        else: # Data found for a single course
+            print(course_info)
