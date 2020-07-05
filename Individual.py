@@ -10,7 +10,8 @@ class Individual:
 
     #   Methods
     def __init__(self):  # No arguments passed
-        print("A new individual has been created")  # Print confirmation
+        #print("A new individual has been created")  # Print confirmation
+        pass
 
 
     def set_first_name(self, first_name):

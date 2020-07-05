@@ -5,7 +5,7 @@ class Student(Individual):
 
     def __init__(self):
         self._schedule = []  # Student schedule
-        print('A new student has been created')
+        
 
     def search_course(self, course_name):
         '''Searches courses by name'''
