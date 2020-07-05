@@ -92,11 +92,11 @@ command = """create table COURSE(
 cursor.execute(command) # Add course table
 
 # Add courses
-cursor.execute("""insert into COURSE values("Computer Architecture", "ELEC-3725-02", "ELEC", "Marisha Rawlins", 1000, 1120, 'TR', 'SUM', 2020, 4, NULL)""")
-cursor.execute("""insert into COURSE values("Advanced Digital Circuit Design", "ELEC-3200-01", "ELEC", "Pilin Junsangsri", 0800, 0920, 'WF', 'SUM', 2020, 4, NULL)""")
+cursor.execute("""insert into COURSE values("Computer Architecture", "ELEC-3725-02", "ELEC", "Marisha Rawlins", 1000, 1120, 'T R', 'SUM', 2020, 4, NULL)""")
+cursor.execute("""insert into COURSE values("Advanced Digital Circuit Design", "ELEC-3200-01", "ELEC", "Pilin Junsangsri", 0800, 0920, 'W F', 'SUM', 2020, 4, NULL)""")
 cursor.execute("""insert into COURSE values("Advanced Digital Circuit Design", "ELEC-3200-02", "ELEC", "Pilin Junsangsri", 1000, 1150, 'F', 'SUM', 2020, 4, NULL)""")
 cursor.execute("""insert into COURSE values("Applied Programming Concepts", "ELEC-3225-01", "ELEC", "Aaron Carpenter", 1200, 1250, 'M', 'SUM', 2020, 4, NULL)""")
-cursor.execute("""insert into COURSE values("Applied Programming Concepts Lab", "ELEC-3225-02", "ELEC", "Aaron Carpenter", 1300, 1450, 'TR', 'SUM', 2020, 4, NULL)""")
+cursor.execute("""insert into COURSE values("Applied Programming Concepts Lab", "ELEC-3225-02", "ELEC", "Aaron Carpenter", 1300, 1450, 'T R', 'SUM', 2020, 4, NULL)""")
 
 db.commit()
 db.close()
