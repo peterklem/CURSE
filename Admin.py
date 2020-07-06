@@ -5,15 +5,14 @@ class Admin(Individual):
     '''Contains functions for use of an administrator'''
 
     def __init__(self):
-        pass
+        print('A new admin has been created')
 
     def add_course(self, course_id):
         '''Adds a course to the database'''
         courseName = input("Enter the course name to add: ") #these variables may need to be changed in order to fit into the correct database spots
         course_ID = input("Enter the ID for the course: ")
         courseDept = input("Enter the department name: ")
-        courseIFName = input("Enter the instructor's first name: ")
-        courseILName = input("Enter the instrucor's last name: ")
+        courseIName = input("Enter the instructor's name: ")
         courseTimeStart = input("Enter the time of the course: ")
         courseTimeEnd = input("Enter the time the course ends: ")
         courseDay = input("Enter the days the course takes place (separate the days with spaces): ")
@@ -21,8 +20,7 @@ class Admin(Individual):
         courseYear = input("Enter what year the course will be taking place: ")
         courseCredits = input("Enter how many credits the course is: ")
         courseCombine = ('INSERT INTO COURSE VALUES (\'' + courseName + '\',' + 
-                          course_ID + ', \'' + courseDept + '\', \'' + courseIFName + '\', \'' + 
-                          courseILName + '\', ' + courseTimeStart + ', ' + courseTimeEnd + ', \'' + courseDay + '\', \'' + 
+                          course_ID + ', \'' + courseDept + '\', \'' + courseIName + '\', ' + courseTimeStart + ', ' + courseTimeEnd + ', \'' + courseDay + '\', \'' + 
                           courseSemester + '\', ' + courseYear + ', ' + courseCredits + ')')
         cursor.execute(courseCombine)
         print("Course has been added.")
