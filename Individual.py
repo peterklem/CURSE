@@ -36,7 +36,7 @@ class Individual:
         print("ID: " + self.__id)
 
 
-    def login(self, user_id, user_type):
+    def login(self, user_id, user_type, user_pass):
         '''Starts an attempt at a login'''
         try:
             user_type_cap = user_type.upper()
@@ -47,12 +47,12 @@ class Individual:
         # Check information from database 
         db = sqlite3.connect("assignment2.db")
         cursor = db.cursor()
-        command = "SELECT ID, NAME, SURNAME FROM " + user_type_cap + " WHERE ID = " + user_id
-        print(command)
+        command = "SELECT ID, NAME, SURNAME FROM " + user_type_cap + " WHERE ID = '" + user_id + "' AND PASS = '" + user_pass + "';"
         cursor.execute(command)
         query_return = cursor.fetchall() # Contains first name, last name, and ID if a matching student is found
         db.close()
         if len(query_return) == 1:  # If data is returned
+
             query_data_seperated = list(query_return[0])
             # Set data if login is successful
             self.set_id(query_data_seperated[0])
@@ -93,4 +93,64 @@ class Individual:
             print("There are multiple courses with that particular ID. Please report to admin.")
 
         else: # Data found for a single course
-            print(course_info)
+            info_list = list(course_info[0])
+            print("\n\nCourse name: " + info_list[0])
+            print('Department: ' + info_list[2])
+            print('Instructor: ' + info_list[3])
+            print("Start time: " + str(info_list[4]))
+            print('End time: ' + str(info_list[5]))
+            print('Days of week: ' + info_list[6])
+            print("Semester: " + info_list[7])
+            print("Credits: " + str(info_list[8]) + '\n\n')
+
+
+    def course_search_parameter(self, course_filter):
+        '''Finds courses based on a parameter'''
+        user_entry = ""     # Holds the user's search string
+        command = ""        # Holds SQL command
+        results = []        # Holds query results
+
+        # Connect to database
+        db = sqlite3.connect("assignment2.db")
+        cursor = db.cursor()
+        
+        if course_filter == 1:
+            # filter by course name
+            user_entry = input("Enter a course name: ")
+            command = "SELECT * FROM COURSE WHERE TITLE LIKE '%" + user_entry + "%'"
+            cursor.execute(command)
+        elif course_filter == 2:
+            # Filter by department
+            user_entry = input("Enter a department: ")
+            command = "SELECT * FROM COURSE WHERE DEPARTMENT LIKE '%" + user_entry + "%'"
+            cursor.execute(command)
+        elif course_filter == 3:
+            # Filter by instructor
+            user_entry = input("Enter an instructor name: ")
+            command = "SELECT * FROM COURSE WHERE INSTRUCTOR LIKE '%" + user_entry + "%'"
+            cursor.execute(command)
+        elif course_filter == 4:
+            # Filter by semester
+            user_entry = input("Enter a semester (FAL, SPR, or SUM): ")
+            command = "SELECT * FROM COURSE WHERE SEMESTER LIKE '%" + user_entry + "%'"
+            cursor.execute(command)
+        elif course_filter == 5:
+            # filter by # of credits
+            user_entry = input("Enter amount of credits: ")
+            command = "SELECT * FROM COURSE WHERE CREDITS = '%" + user_entry + "%'"
+            cursor.execute(command)
+
+        # Fetch results
+        results = cursor.fetchall()
+        for i in results:
+            print('\n\nCourse title: ' + i[0])
+            print('Course ID: ' + i[1])
+            print('Department: ' + i[2])
+            print('Instructor: ' + i[3])
+            print('Start time: ' + str(i[4]))
+            print('End time: ' + str(i[5]))
+            print('Days of the week: ' + i[6])
+            print('Semester: ' + i[7])
+            print('Credits: ' + str(i[8]) + '\n\n')
+        db.close()
+           
