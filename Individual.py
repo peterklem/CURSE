@@ -146,7 +146,7 @@ class Individual:
             print('There are no results that match the specified condition.')
         for i in results:
             print('\n\nCourse title: ' + i[0])
-            print('Course ID: ' + i[1])
+            print('Course ID: ' + str(i[1]))
             print('Department: ' + i[2])
             print('Instructor: ' + i[3])
             print('Start time: ' + str(i[4]))

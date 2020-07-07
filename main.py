@@ -66,6 +66,8 @@ if __name__ == '__main__':
             print("To search course by ID, enter '1'.")
             print("To search for courses based on other parameters, enter '2'.")
             print("To log out, enter '3'.")
+
+
             if user_type == 'STUDENT':
                 print("To add a course to your schedule, enter '4'.")
                 print("To remove a course from your schedule, enter '5'.\n")
@@ -73,8 +75,8 @@ if __name__ == '__main__':
                 selection_input = input()
 
                 if selection_input == '1':
-                    course_id = input("\nPlease enter a course ID.")
-                    Student_obj.course_search_id()
+                    course_id = input("\nPlease enter a course ID: ")
+                    Student_obj.course_search_id(course_id)
 
                 elif selection_input == '2':
                     print("Select 1 to search by course.")
@@ -84,11 +86,10 @@ if __name__ == '__main__':
                     print("Select 5 to search by number of credits.")
                     filter_input = input()
                     filter_input_int = int(filter_input)
-                    if filter_input_int > 0 and filter_input < 6:
-                        Student_obj.course_search_parameter()
+                    if filter_input_int > 0 and filter_input_int < 6:
+                        Student_obj.course_search_parameter(filter_input_int)
                     else:
                         print("Invalid entry.")
-                    #Call student search course by some other condition
 
                 elif selection_input == '3':
                     # Call student logout
@@ -108,20 +109,32 @@ if __name__ == '__main__':
 
             elif user_type == "INSTRUCTOR":
                 print("To print the class roster for a certain course, enter '4'.\n")
+                selection_input = input()
 
-                if selection_input == 1:
+                if selection_input == '1':
                     # Call instructor search course by ID
-                    course_id = input("\nPlease enter a course ID.")
-                    Student_obj.course_search_id()
-                    pass
-                elif selection_input == 2:
+                    course_id = input("\nPlease enter a course ID: ")
+                    Instructor_obj.course_search_id(course_id)
+
+                elif selection_input == '2':
                     #Call instructor search course by some other condition
-                    pass
-                elif selection_input == 3:
+                    print("Select 1 to search by course.")
+                    print("Select 2 to search by department.")
+                    print("Select 3 to search by Instructor")
+                    print("Select 4 to search by semester.")
+                    print("Select 5 to search by number of credits.")
+                    filter_input = input()
+                    filter_input_int = int(filter_input)
+                    if filter_input_int > 0 and filter_input_int < 6:
+                        Instructor_obj.course_search_parameter(filter_input_int)
+                    else:
+                        print("Invalid entry.")
+
+                elif selection_input == '3':
                     # Call instructor logout
-                    login_flag = False
-                    pass
-                elif selection_input == 4:
+                    login_flag = Instructor_obj.logout()
+                    
+                elif selection_input == '4':
                     # Call instructor assemble course roster
                     pass
                 else:
@@ -131,20 +144,33 @@ if __name__ == '__main__':
                 print("To add a course to the system, enter '4'.")
                 print("To remove a course from the system, enter '5'.\n")
 
-                if selection_input == 1:
+                selection_input = input()
+
+                if selection_input == '1':
                     # Call admin search course by ID
-                    pass
-                elif selection_input == 2:
-                    #Call student search course by some other condition
-                    pass
-                elif selection_input == 3:
+                    course_id = input("\nPlease enter a course ID: ")
+                    Admin_obj.course_search_id(course_id)
+                elif selection_input == '2':
+                    #Call instructor search course by some other condition
+                    print("Select 1 to search by course.")
+                    print("Select 2 to search by department.")
+                    print("Select 3 to search by Instructor")
+                    print("Select 4 to search by semester.")
+                    print("Select 5 to search by number of credits.")
+                    filter_input = input()
+                    filter_input_int = int(filter_input)
+                    if filter_input_int > 0 and filter_input_int < 6:
+                        Admin_obj.course_search_parameter(filter_input_int)
+                    else:
+                        print("Invalid entry.")
+                    
+                elif selection_input == '3':
                     # Call admin logout
-                    login_flag = False
-                    pass
-                elif selection_input == 4:
+                    login_flag = Admin_obj.logout()
+                elif selection_input == '4':
                     # Call admin add course to system
                     pass
-                elif selection_input == 5:
+                elif selection_input == '5':
                     # Call admin remove course from system
                     pass
 
