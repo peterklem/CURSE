@@ -77,11 +77,11 @@ cursor.execute("""INSERT INTO ADMIN VALUES(00030002, 'Registration', 'Malala', '
 # Create course table
 command = """create table COURSE(
                     TITLE           varchar (30)    not null,
-                    CRN             char(10)        not null    primary key,
+                    CRN             int             not null    primary key,
                     DEPARTMENT      varchar(20)     not null,
                     INSTRUCTOR      varchar(30)     not null,
-                    START_TIME      int(4)         not null,
-                    END_TIME        int(4)         not null,
+                    START_TIME      int(4)          not null,
+                    END_TIME        int(4)          not null,
                     DAYS_OF_WEEK    varchar(5)      not null,
                     SEMESTER        char(3)         not null,
                     YEAR            int(4)          not null,
