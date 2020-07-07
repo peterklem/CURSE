@@ -1,11 +1,12 @@
 from Individual import *
 
+
 class Student(Individual):
     '''Contains functions that pertain to students'''
 
     def __init__(self):
         self._schedule = []  # Student schedule
-        
+        print('A new student has been created')
 
     def search_course(self, course_name):
         '''Searches courses by name'''
@@ -15,12 +16,26 @@ class Student(Individual):
 
     def add_course(self, course_id):
         '''Adds this student to a course specified by course ID'''
-        course_id = input("Enter the CRN of the course to add: ")
-        courseAddStart = 'SELECT * FROM COURSE WHERE CRN = '
-        courseAddFinal = (courseAddStart + courseAdd)
-        cursor.execute(courseAddFinal)
-        result = cursor.execute()
-        #need to add to students database
+        def convertTuple(tup): #used for tuple conversion https://www.geeksforgeeks.org/python-program-to-convert-a-tuple-to-a-string/
+            str = ''.join(tup)
+            return str
+        student_ID = input("Enter your student ID: ")
+        course_ID = input("Enter the ID of the course to add: ")
+        course_ID = ('"' + course_ID + '"')
+        student_ID = ('"' + student_ID + '"')
+        studentQuery = ('SELECT COURSES FROM STUDENT WHERE ID = ' + student_ID)
+        cursor.execute(studentQuery)
+        hold = cursor.fetchall()
+        newlist = list(hold)
+        holdResult = newlist[0]
+        str = convertTuple(holdResult)
+        str = ('"' + str + '"')
+        courseAddQuery = ('UPDATE STUDENT SET COURSES = ' + str + '"-"' + course_ID + ' WHERE ID = ' + student_ID)
+        cursor.execute(courseAddQuery)
+        studentQuery = ('SELECT COURSES FROM STUDENT WHERE ID = ' + student_ID)
+        cursor.execute(studentQuery)
+        studentAddQuery = ('UPDATE COURSE SET STUDENT_LIST = ' + str + '"-"' + student_ID + ' WHERE CRN = ' + course_ID)
+        cursor.execute(studentAddQuery)
 
     def drop_course(self, course_id):
         '''Removes this student to a course specified by course ID'''
