@@ -142,6 +142,8 @@ class Individual:
 
         # Fetch results
         results = cursor.fetchall()
+        if len(results) == 0:
+            print('There are no results that match the specified condition.')
         for i in results:
             print('\n\nCourse title: ' + i[0])
             print('Course ID: ' + i[1])

@@ -7,4 +7,4 @@ import sqlite3
 if __name__ == '__main__':
 
     stud = Student()
-    stud.course_search_id('ELEC-3725-02')
+    stud.course_search_parameter(4)

@@ -16,13 +16,14 @@ if __name__ == '__main__':
     user_pass = ""          # Holds user's entered password
     login_flag = False
     quit_flag = False
+    course_id = ""          # Holds ID for a user-inputted course
 # Call login
     while quit_flag == False: # Go while the user does 
 
         while login_flag == False:
             user_type = input("Are you a student, instructor, or admin? ")
             user_input_id = input("Enter user ID: ")  
-            user_input_id = input("Enter password: ")
+            user_pass = input("Enter password: ")
             user_type = user_type.upper()
 
             if user_type == 'STUDENT':
@@ -71,20 +72,32 @@ if __name__ == '__main__':
 
                 selection_input = input()
 
-                if selection_input == 1:
-                    # Call student search course by ID
-                    pass
-                elif selection_input == 2:
+                if selection_input == '1':
+                    course_id = input("\nPlease enter a course ID.")
+                    Student_obj.course_search_id()
+
+                elif selection_input == '2':
+                    print("Select 1 to search by course.")
+                    print("Select 2 to search by department.")
+                    print("Select 3 to search by Instructor")
+                    print("Select 4 to search by semester.")
+                    print("Select 5 to search by number of credits.")
+                    filter_input = input()
+                    filter_input_int = int(filter_input)
+                    if filter_input_int > 0 and filter_input < 6:
+                        Student_obj.course_search_parameter()
+                    else:
+                        print("Invalid entry.")
                     #Call student search course by some other condition
-                    pass
-                elif selection_input == 3:
+
+                elif selection_input == '3':
                     # Call student logout
                     login_flag = Student_obj.logout()
-                    pass
-                elif selection_input == 4:
+
+                elif selection_input == '4':
                     # Call student add class to schedule
                     pass
-                elif selection_input == 5:
+                elif selection_input == '5':
                     # Call student remove class from schedule
                     pass
 
@@ -98,6 +111,8 @@ if __name__ == '__main__':
 
                 if selection_input == 1:
                     # Call instructor search course by ID
+                    course_id = input("\nPlease enter a course ID.")
+                    Student_obj.course_search_id()
                     pass
                 elif selection_input == 2:
                     #Call instructor search course by some other condition
