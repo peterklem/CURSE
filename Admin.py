@@ -9,30 +9,48 @@ class Admin(Individual):
 
     def add_course(self, course_id):
         '''Adds a course to the database'''
-        add_another_day = True  # Flag for adding additional meeting days/times
-        choice = 'y'
-        course = {}
-        course['Days'] = []
-        course['Start Time'] = []
-        course['End Times'] = []
-        course_name = input('Enter course name: ')
-        while add_another_day == True:
-            course['Days'].append(input('Enter a day to meet: '))
-            course['Start Time'].append(input('Enter a starting time for this day: '))
-            course['End Time'].append(input('Enter an ending time for this day: '))
-
-            choice = input("Add another meeting time? ([y] or [n]")
-            if choice == 'y':
-                add_another_day = True
-            else:
-                add_another_day = False
-
-        # All information passed to SQL here
-        print('{} has been added'.format(course_id))
+        courseName = input("Enter the course name to add: ") #these variables may need to be changed in order to fit into the correct database spots
+        course_ID = input("Enter the ID for the course: ")
+        courseDept = input("Enter the department name: ")
+        courseIName = input("Enter the instructor's name: ")
+        courseTimeStart = input("Enter the time of the course: ")
+        courseTimeEnd = input("Enter the time the course ends: ")
+        courseDay = input("Enter the days the course takes place (separate the days with spaces): ")
+        courseSemester = input("Enter what semester the course will be offered for: ")
+        courseYear = input("Enter what year the course will be taking place: ")
+        courseCredits = input("Enter how many credits the course is: ")
+        courseCombine = ('INSERT INTO COURSE VALUES (\'' + courseName + '\',' + 
+                          course_ID + ', \'' + courseDept + '\', \'' + courseIName + '\', ' + courseTimeStart + ', ' + courseTimeEnd + ', \'' + courseDay + '\', \'' + 
+                          courseSemester + '\', ' + courseYear + ', ' + courseCredits + ')')
+        cursor.execute(courseCombine)
+        print("Course has been added.")
+#        add_another_day = True  # Flag for adding additional meeting days/times
+#        choice = 'y'
+#        course = {}
+#        course['Days'] = []
+#        course['Start Time'] = []
+#        course['End Times'] = []
+#        course_name = input('Enter course name: ')
+#        while add_another_day == True:
+#            course['Days'].append(input('Enter a day to meet: '))
+#            course['Start Time'].append(input('Enter a starting time for this day: '))
+#            course['End Time'].append(input('Enter an ending time for this day: '))
+#
+#            choice = input("Add another meeting time? ([y] or [n]")
+#            if choice == 'y':
+#                add_another_day = True
+#            else:
+#                add_another_day = False
+#
+ #       # All information passed to SQL here
+ #       print('{} has been added'.format(course_id))
 
     def remove_course(self, course_id):
         '''Removes a course from the database'''
-        # Find ID in SQL and delete course
+        course_ID = input("Enter the course CRN you wish to remove: ")
+        courseRemove = ('DELETE FROM COURSE WHERE CRN = ' + course_ID)
+        cursor.execute(courseRemove)
+        print("Course has been removed.")
 
     def add_user(self, user_id, first_name, last_name):
         '''Adds a new user to the database'''
