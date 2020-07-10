@@ -14,21 +14,33 @@ if __name__ == '__main__':
     I = Instructor()
     A = Admin()
 
-    # Reset the text file
+    flag = False
+
+    # Reset and open the text file
     outfile = open('login_test_output.txt', 'w')
-    outfile.close()
-    
+ 
     # Try with valid information
-    S.login('10001', 'student', 'PhysicsFounder')
-    I.login('20001', 'instructor', 'hummus')
-    A.login('30001', 'admin', 'fourtyFourth')
+    outfile.write('EXPECTED RESULT: True\n')
+    outfile.write(str(S.login('10001', 'student', 'PhysicsFounder')) + ',')
+    outfile.write(str(I.login('20001', 'instructor', 'hummus')) + ',')
+    outfile.write(str(A.login('30001', 'admin', 'fourtyFourth')) + '\n\n')
 
     # Try with invalid passwords
-    S.login('10001', 'student', 'Phys')
-    I.login('20001', 'instructor', 'hmus')
-    A.login('30001', 'admin', 'fourtyFourth')
+    outfile.write ('EXPECTED RESULT: False.\n')
+    outfile.write(str(S.login('10001', 'student', 'Phys')) + ',')
+    outfile.write(str(I.login('20001', 'instructor', 'hmus')) + ',')
+    outfile.write(str(A.login('30001', 'admin', 'fourtyFourth')) + '\n\n')
 
     # Try with characters as the ID
-    S.login('abd', 'student', 'PhysicsFounder')
-    I.login('20001', 'instructor', 'hummus')
-    A.login('30001', 'admin', 'fourtyFourth')
+    outfile.write('EXPECTED RESULT: False\n')
+    outfile.write(str(S.login('abd', 'student', 'PhysicsFounder')) + ',')
+    outfile.write(str(I.login('asdfdashb', 'instructor', 'hummus')) + ',')
+    outfile.write(str(A.login('arwea', 'admin', 'fourtyFourth')))
+
+    # Try with nothing entered for individual type
+    outfile.write ('\n\nEXPECTED RESULT: False.\n')
+    outfile.write(str(S.login('10001', '', 'PhysicsFounder')) + ',')
+    outfile.write(str(I.login('20001', '', 'hummus')) + ',')
+    outfile.write(str(A.login('30001', '', 'fourtyFourth')) + '\n\n')
+
+    outfile.close()
