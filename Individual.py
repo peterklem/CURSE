@@ -15,58 +15,38 @@ class Individual:
 
 
 
-    def set_first_name(self):
+    def set_first_name(self, first_name):
         '''Sets first name of individual'''
-        self._first_name = input("Enter first name: ")
-        print("First name set as " + self._first_name)
+        self._first_name = first_name
 
 
 
     def set_last_name(self, last_name):
         '''Sets last name of individual'''
-        self._last_name = input("Enter last name: ")
-        print("Last name set as " + self._last_name)
+        self._last_name = last_name
 
 
     def set_id(self, id):
         '''Sets ID of individual'''
-        id_flag = False     # True if the input ID is not a duplicate
-
-        while id_flag == False:     # Loop until a valid ID is input
-
-            input_id = input("Enter individual ID: ")
-            
-            # Check for matching ID, must be unique
-
-            db = sqlite3.connect('database.db')
-            cursor = db.cursor()
-            cmd = 'SELECT ID FROM STUDENT WHERE ID = ' + input_id
-            cursor.execute(cmd)
-            matching_id = cursor.fetchall()
-
-            if len(matching_id) == 0:   # Check ID flag
-                self._id = input_id
-                print("ID set.")  # Print confirmation
-                id_flag = True
-
-            else:
-                print("That ID is already taken. Please choose another")
-                id_flag = False
-
-
-        db.close()
         self._id = id
 
 
     def print_name_id(self):
         '''Prints all three variables to the output'''
-        print('First Name: ' + self.__first_name)
-        print("Last Name: " + self.__last_name)
-        print("ID: " + self.__id)
+        print('First Name: ' + self._first_name)
+        print("Last Name: " + self._last_name)
+        print("ID: " + self._id)
 
 
     def login(self, user_id, user_type, user_pass):
         '''Starts an attempt at a login'''
+        #============================================
+        # Logging and testing functions
+        outfile = open('login_test_output.txt', 'a')
+        outfile.write('\nInputted user ID: ' + user_id + '\n')
+        outfile.write('Inputted user type: ' + user_type + '\n')
+        outfile.write('Inputted user password: ' + user_pass + '\n')
+        #============================================
         try:
             user_type_cap = user_type.upper()
         except:
@@ -77,9 +57,9 @@ class Individual:
         db = sqlite3.connect("assignment2.db")
         cursor = db.cursor()
         command = "SELECT ID, NAME, SURNAME FROM " + user_type_cap + " WHERE ID = '" + user_id + "' AND PASS = '" + user_pass + "';"
-        cursor.execute(command)
+        cursor.execute(command)    
         query_return = cursor.fetchall() # Contains first name, last name, and ID if a matching student is found
-        db.close()
+        db.close()    
         if len(query_return) == 1:  # If data is returned
 
             query_data_seperated = list(query_return[0])
@@ -88,11 +68,22 @@ class Individual:
             self.set_first_name(query_data_seperated[1])
             self.set_last_name(query_data_seperated[2])
             print("Login successful.")
+            #============================================
+            # More logging
+            outfile.write('User was logged in.\n')
+            outfile.close()
+            #============================================
             print("Welcome " + query_data_seperated[1] + " " + query_data_seperated[2] + "!")
+
             return True
 
         else:                       # If data is not returned
             print("Login failed.")
+            #============================================
+            # More logging
+            outfile.write('User was not logged in.\n')
+            outfile.close()
+            #============================================
             return False
 
 

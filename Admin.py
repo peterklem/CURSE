@@ -5,7 +5,7 @@ class Admin(Individual):
     '''Contains functions for use of an administrator'''
 
     def __init__(self):
-        print('A new admin has been created')
+        #print('A new admin has been created')
 
     def add_course(self, course_id):
         '''Adds a course to the database'''
