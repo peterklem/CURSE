@@ -6,7 +6,7 @@ class Admin(Individual):
 
     def __init__(self):
         #print('A new admin has been created')
-
+        pass
     def add_course(self, course_id):
         '''Adds a course to the database'''
         courseName = input("Enter the course name to add: ") #these variables may need to be changed in order to fit into the correct database spots
