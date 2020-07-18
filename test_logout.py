@@ -31,10 +31,13 @@ if __name__ == '__main__':
     outfile.write(str(A.logout(confirm='n'))  + '.\n\n') 
 
     # User enters a number 
+    outfile.write("Should return true: \n")
     outfile.write(str(S.logout(confirm='1')) + ', ')
     outfile.write(str(I.logout(confirm='2')) + ', ')
     outfile.write(str(A.logout(confirm='3'))  + '.\n\n') 
+    
     # User enters nothing
+    outfile.write("Should return true: \n")
     outfile.write(str(S.logout(confirm='')) + ', ')
     outfile.write(str(I.logout(confirm='')) + ', ')
     outfile.write(str(A.logout(confirm=''))  + '.\n\n') 
