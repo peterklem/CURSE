@@ -4,10 +4,6 @@ from Individual import *
 class Student(Individual):
     '''Contains functions that pertain to students'''
 
-    def __init__(self):
-        self._schedule = []  # Student schedule
-        #print('A new student has been created')
-
     def search_course(self, course_name):
         '''Searches courses by name'''
         results = []
@@ -46,8 +42,45 @@ class Student(Individual):
 
     def print_schedule(self):
         '''Prints out student's schedule'''
-        for i in self._schedule:
-            print(i)
+        # Get CRN's of courses registered for
+        db = sqlite3.connect('assignment2.db')
+        cursor = db.cursor()
+        command = "SELECT COURSES FROM STUDENT WHERE ID = '" + str(self._id) + "';"
+        cursor.execute(command)
+        raw_courses = cursor.fetchall() # Contains hyphenated list of course ID's
+        course_ids = raw_courses[0][0] # get data as single string
+        id_lst = course_ids.split('-')
+        #print(id_lst)
+
+        full_schedule = []
+        for course in id_lst:
+            command = "SELECT * FROM COURSE WHERE CRN = " + course + ";"
+            cursor.execute(command)
+            course_dict = {} # Holds all data seperated out from SQL returned data
+            data = cursor.fetchall()
+            # Seperate and organize data
+            course_dict['Title'] = data[0][0]
+            course_dict['CRN'] = data[0][1]
+            course_dict['Department'] = data[0][2]
+            course_dict['Instructor'] = data[0][3]
+            course_dict['Start Time'] = data[0][4]
+            course_dict['End Time'] = data[0][5]
+            course_dict['Weekdays'] = data[0][6] # creates list of days (by letter)
+            course_dict['Semester'] = data[0][7]
+            course_dict['Year'] = data[0][8]
+            course_dict['Credits'] = data[0][9]
+            full_schedule.append(course_dict) # add data to list
+        
+        print('COURSE SCHEDULE: \n\n')
+        for course in full_schedule:
+            for item in course.items():
+                if isinstance(item[1], str): # Check to see if variable is type string
+                    print(item[0] + ': ' + item[1])
+                else:
+                    print(item[0] + ': ' + str(item[1]))
+            # Space between courses
+            print('\n')
+
 
 
     def check_conflicts(self):
@@ -97,11 +130,7 @@ class Student(Individual):
                         overlap_flag = True
 
                     if overlap_flag == True:
-                        print('There is an overlap between ', course_day_time[i]['name'], ' and ', course_day_time[j]['name'])
-
-            
-        
-        
+                        print('There is an overlap between ', course_day_time[i]['name'], ' and ', course_day_time[j]['name'])  
 
 
 
@@ -110,5 +139,5 @@ class Student(Individual):
 if __name__ == '__main__':
     isaac = Student()
     isaac.set_id(10001)
-    isaac.check_conflicts()
+    isaac.print_schedule()
     
