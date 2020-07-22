@@ -1,4 +1,5 @@
 from Individual import *
+from database import *
 
 class Instructor(Individual):
     '''Contains functions for use of an instructor or professor'''
@@ -18,11 +19,11 @@ class Instructor(Individual):
         for course in student.schedule:
             print(course)
 
-    def print_class_roster(self, course_id):
-       
-        def r_Print(roster):
-            cursor.execute (rosterQueryFinal)
+    def print_class_roster(self):
         roster = input("Enter the class roster (CRN) to print: ") 
         rosterQuery = 'SELECT STUDENT_LIST FROM COURSE WHERE CRN = ' 
         rosterQueryFinal = (rosterQuery + roster)
-        r_Print(roster)
+        cursor.execute(rosterQueryFinal)
+        query_result = cursor.fetchall()
+        for i in query_result:
+            print(i)

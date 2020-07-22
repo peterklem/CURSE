@@ -1,5 +1,5 @@
 from Individual import *
-
+from database import *
 
 class Student(Individual):
     '''Contains functions that pertain to students'''
@@ -14,7 +14,7 @@ class Student(Individual):
         # Search SQL database for matches, add to results
         return results
 
-    def add_course(self, course_id):
+    def add_course(self):
         '''Adds this student to a course specified by course ID'''
         def convertTuple(tup): #used for tuple conversion https://www.geeksforgeeks.org/python-program-to-convert-a-tuple-to-a-string/
             string = ''.join(tup)
@@ -40,12 +40,12 @@ class Student(Individual):
         newlist = list(hold)
         holdResult = newlist[0]
         string = convertTuple(holdResult)
-        course = str(string + ' ' + student_ID)
-        studentAddQuery = ('UPDATE COURSE SET STUDENT_LIST = \'' + student_ID + '\' WHERE CRN = ' + course_ID)
+        student = str(string + ' ' + student_ID)
+        studentAddQuery = ('UPDATE COURSE SET STUDENT_LIST = \'' + student + '\' WHERE CRN = ' + course_ID)
         cursor.execute(studentAddQuery)
 
 
-    def drop_course(self, course_id):
+    def drop_course(self):
         '''Removes this student to a course specified by course ID'''
         def convertTuple(tup): #used for tuple conversion https://www.geeksforgeeks.org/python-program-to-convert-a-tuple-to-a-string/
             string = ''.join(tup)
@@ -80,7 +80,12 @@ class Student(Individual):
         userRemoveFinal = ('UPDATE COURSE SET STUDENT_LIST = \'' + newString + '\' WHERE CRN = ' + courseRemove)
         cursor.execute(userRemoveFinal)
 
-    def print_schedule(self):
+    def print_courses(self):
         '''Prints out student's schedule'''
-        for i in self._schedule:
+        roster = input("Enter your ID: ") 
+        rosterQuery = 'SELECT COURSES FROM STUDENT WHERE ID = ' 
+        rosterQueryFinal = (rosterQuery + roster)
+        cursor.execute(rosterQueryFinal)
+        query_result = cursor.fetchall()
+        for i in query_result:
             print(i)
