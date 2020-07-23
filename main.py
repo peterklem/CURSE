@@ -70,7 +70,9 @@ if __name__ == '__main__':
 
             if user_type == 'STUDENT':
                 print("To add a course to your schedule, enter '4'.")
-                print("To remove a course from your schedule, enter '5'.\n")
+                print("To remove a course from your schedule, enter '5'.")
+                print("To check for conflicts in your schedule, enter '6'.")
+                print("To print schedule, enter '7'.\n")
 
                 selection_input = input()
 
@@ -101,14 +103,18 @@ if __name__ == '__main__':
                 elif selection_input == '5':
                     # Call student remove class from schedule
                     pass
-
+                elif selection_input == '6':
+                    Student_obj.check_conflicts()
+                elif selection_input == '7':
+                    Student_obj.print_schedule()           
                 else:
                     print("Invalid selection, please try again. \n")
                 
 
 
             elif user_type == "INSTRUCTOR":
-                print("To print the class roster for a certain course, enter '4'.\n")
+                print("To print the class roster for a certain course, enter '4'.")
+                print("To print schedule, enter '5'.\n")
                 selection_input = input()
 
                 if selection_input == '1':
@@ -137,6 +143,9 @@ if __name__ == '__main__':
                 elif selection_input == '4':
                     # Call instructor assemble course roster
                     pass
+                
+                elif selection_input == '5':
+                    Instructor_obj.print_schedule()
                 else:
                     print("Invalid selection, please try again. \n")
                 
