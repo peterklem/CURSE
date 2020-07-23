@@ -6,13 +6,8 @@ import sqlite3
 
 if __name__ == '__main__':
 
-    db = sqlite3.connect('assignment2.db')
-    cursor = db.cursor()
-    command = "SELECT * FROM COURSE WHERE INSTRUCTOR LIKE '%carp%'"
-    cursor.execute(command)
+    student1 = Student(10001)
+    student1.print_schedule()
 
-    results = cursor.fetchall()
-    print(results)
-
-
-    db.close()
+    ins1 = Instructor(20007)
+    ins1.print_schedule()
