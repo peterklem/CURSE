@@ -1,5 +1,5 @@
 from Individual import *
-
+from database import *
 
 class Student(Individual):
     '''Contains functions that pertain to students'''
@@ -7,7 +7,7 @@ class Student(Individual):
     def __init__(self):
         pass
 
-    def add_course(self, course_id):
+    def add_course(self):
         '''Adds this student to a course specified by course ID'''
         def convertTuple(tup): #used for tuple conversion https://www.geeksforgeeks.org/python-program-to-convert-a-tuple-to-a-string/
             string = ''.join(tup)
@@ -33,12 +33,12 @@ class Student(Individual):
         newlist = list(hold)
         holdResult = newlist[0]
         string = convertTuple(holdResult)
-        course = str(string + ' ' + student_ID)
-        studentAddQuery = ('UPDATE COURSE SET STUDENT_LIST = \'' + student_ID + '\' WHERE CRN = ' + course_ID)
+        student = str(string + ' ' + student_ID)
+        studentAddQuery = ('UPDATE COURSE SET STUDENT_LIST = \'' + student + '\' WHERE CRN = ' + course_ID)
         cursor.execute(studentAddQuery)
 
 
-    def drop_course(self, course_id):
+    def drop_course(self):
         '''Removes this student to a course specified by course ID'''
         def convertTuple(tup): #used for tuple conversion https://www.geeksforgeeks.org/python-program-to-convert-a-tuple-to-a-string/
             string = ''.join(tup)
