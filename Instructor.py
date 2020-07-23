@@ -3,10 +3,8 @@ from Individual import *
 class Instructor(Individual):
     '''Contains functions for use of an instructor or professor'''
 
-    def __init__(self, id):
-        self.__id = id
-        self.schedule = []  # Instructor schedule
-        print('A new instructor has been created')
+    def __init__(self):
+        pass
 
 
     def print_class_roster(self, course_id):

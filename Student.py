@@ -4,9 +4,8 @@ from Individual import *
 class Student(Individual):
     '''Contains functions that pertain to students'''
 
-    def __init__(self, id):
-        self.__id = id # Student ID
-        #print('A new student has been created')
+    def __init__(self):
+        pass
 
     def add_course(self, course_id):
         '''Adds this student to a course specified by course ID'''
