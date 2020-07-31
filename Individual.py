@@ -54,7 +54,8 @@ class Individual:
         # Check information from database 
         db = sqlite3.connect("assignment2.db")
         cursor = db.cursor()
-        command = "SELECT ID, NAME, SURNAME FROM " + user_type_cap + " WHERE ID = '" + user_id + "' AND PASS = '" + user_pass + "';"
+        command = "SELECT * FROM STUDENT"
+        command = "SELECT ID, FNAME, SURNAME FROM " + user_type_cap + " WHERE ID = '" + user_id + "' AND PASS = '" + user_pass + "';"
         cursor.execute(command)    
         query_return = cursor.fetchall() # Contains first name, last name, and ID if a matching student is found
         db.close()    
