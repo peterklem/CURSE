@@ -9,7 +9,7 @@ cursor.execute('drop table COURSE')
 
 # Create student table
 command = """CREATE TABLE STUDENT(
-ID 		    INT 	PRIMARY KEY 	NOT NULL,
+ID 		    INT 	NOT NULL PRIMARY KEY,
 PASS        TEXT    NOT NULL,
 NAME		TEXT	NOT NULL,
 SURNAME		TEXT 	NOT NULL,
